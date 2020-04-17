@@ -9,14 +9,30 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
+<!-- minor CSS for background image -->
+<style>
+  #bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+	
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+</style>
+
+
   </head>
 
   <body>
-    <div class="container">
+    <img src=" {{ url_for('static', filename='img/bacteria.jpg') }}" id="bg" alt="">
+    <div class="container fluid ">
       <div class="row">
         <div class="col-md-12 jumbotron text-center">
           <h1>Belly Button Biodiversity Dashboard</h1>
           <p>Use the interactive charts below to explore the dataset</p>
+          <p>The pie chart reflect the total amount a sample units under that specific classification. For example if a sample had five OTU IDs last classified as Bacteria, the total was summed up and displayed in the pie chart. The gauge indicates that sampmles bellybutton was frequency, and the bubble chart was constructed to reflect the value for the specific OTU ID.</p>
         </div>
       </div>
       <div class="row">
@@ -35,7 +51,7 @@
             <div id="sample-metadata" class="panel-body"></div>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 ">
           <div id="pie"></div>
         </div>
         <div class="col-md-5">
@@ -44,15 +60,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 col-lg-12 col-xl-12">
         <div id="bubble"></div>
       </div>
     </div>
-
-    <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-    <!-- <script src="../static/js/app.js"></script> -->
   </body>
 </html>
